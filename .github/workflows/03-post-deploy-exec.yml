@@ -8,6 +8,8 @@ name: 'Execução por deploy'
 on:
   workflow_run:
     workflows: ['Execução Manual']
+    types:
+      - completed
 
 jobs:
   #descricao do job
