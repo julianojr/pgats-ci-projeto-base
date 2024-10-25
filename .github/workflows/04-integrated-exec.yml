@@ -5,6 +5,7 @@ name: 'Execução Integrada'
 
 #triggers de execução
 on:
+  workflow_dispatch:
 
 jobs:
   inpection:
