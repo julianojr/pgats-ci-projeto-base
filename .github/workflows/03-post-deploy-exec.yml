@@ -1,0 +1,39 @@
+# CI de Nível 03 - Disparo automático sempre que outro deploy for concluído
+
+# nome que vai aparecer nas opções de pipe
+name: 'Execução por deploy'
+
+#triggers de execução
+  #trigger de execução agendada - workflow_run
+on:
+  workflow_run:
+    workflows: ['Execução Manual']
+
+jobs:
+  #descricao do job
+  e2e-tests:
+    #maquina que o job vai rodar
+    runs-on: ubuntu-latest
+    #passo a passo das acoes do job
+    steps:
+      - uses: actions/checkout@v4
+      #- uses: actions/setup-node@v4
+      #  with:
+      #    node-version: lts/*
+      - name: Instalando Yarn
+        run: npm install -g yarn
+
+      - name: Instalando dependências
+        run: yarn
+
+      - name: Instalando Playwright
+        run: yarn playwright install
+
+      - name: Testes E2E
+        run: yarn run e2e
+
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }} 
+        with: 
+          name: relatorio-de-testes
+          path: ./playwright-report 
