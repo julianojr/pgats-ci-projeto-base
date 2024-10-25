@@ -4,7 +4,7 @@
 name: 'Execução por deploy'
 
 #triggers de execução
-  #trigger de execução pós-deploy - workflow_run
+#trigger de execução pós-deploy - workflow_run
 on:
   workflow_run:
     workflows: ['Execução Manual']
@@ -35,7 +35,7 @@ jobs:
         run: yarn run e2e
 
       - uses: actions/upload-artifact@v4
-        if: ${{ !cancelled() }} 
-        with: 
+        if: ${{ !cancelled() }}
+        with:
           name: relatorio-de-testes
-          path: ./playwright-report 
+          path: ./playwright-report

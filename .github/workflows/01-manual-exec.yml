@@ -4,7 +4,7 @@
 name: 'Execução Manual'
 
 #triggers de execução
-  #trigger de execução manual - workflow_dispatch
+#trigger de execução manual - workflow_dispatch
 on:
   workflow_dispatch:
 
@@ -32,7 +32,7 @@ jobs:
         run: yarn run e2e
 
       - uses: actions/upload-artifact@v4
-        if: ${{ !cancelled() }} 
-        with: 
+        if: ${{ !cancelled() }}
+        with:
           name: relatorio-de-testes
-          path: ./playwright-report 
+          path: ./playwright-report
