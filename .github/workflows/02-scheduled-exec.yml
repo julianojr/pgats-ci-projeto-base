@@ -7,7 +7,7 @@ name: 'Execução Agendada'
   #trigger de execução agendada - schedule
 on:
   schedule:
-    - cron: '* 16 * * *'
+    - cron: '20 22 * * *'
 
     #a → minuto
     #b → hora
