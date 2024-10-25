@@ -1,18 +1,27 @@
-# CI de Nível 03 - Disparo automático sempre que outro deploy for concluído
+# CI de Nível 01 - Disparo automático dentro da pipeline de desenvolvimento
 
 # nome que vai aparecer nas opções de pipe
-name: 'Execução por deploy'
+name: 'Execução Integrada'
 
 #triggers de execução
-  #trigger de execução pós-deploy - workflow_run
 on:
-  workflow_run:
-    workflows: ['Execução Manual']
-    types:
-      - completed
 
 jobs:
-  #descricao do job
+  inpection:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Instalando Yarn
+        run: npm install -g yarn
+
+      - name: Instalando dependências
+        run: yarn
+
+      - name: Padronização de código (Lint)
+        run: yarn lint
+
   e2e-tests:
     #maquina que o job vai rodar
     runs-on: ubuntu-latest
