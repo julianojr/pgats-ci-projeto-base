@@ -7,10 +7,7 @@ name: 'Execução Agendada'
   #trigger de execução agendada - schedule
 on:
   schedule:
-    - cron: '31 18 * * *'
-    - uses: szenius/set-timezone@v2.0
-      with:
-        timezoneLinux: "America/Sao_Paulo"
+    - cron: '34 18 * * *'
 
     #a → minuto
     #b → hora
