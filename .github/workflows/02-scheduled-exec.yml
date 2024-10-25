@@ -1,12 +1,23 @@
-# CI de Nível 01 - Disparo manual a partir de 1 clique
+# CI de Nível 02 - Disparo automático em períodos definidos
 
 # nome que vai aparecer nas opções de pipe
-name: 'Execução Manual'
+name: 'Execução Agendada'
 
 #triggers de execução
-  #trigger de execução manual - workflow_dispatch
+  #trigger de execução agendada - schedule
 on:
-  workflow_dispatch:
+  schedule:
+    - cron: '0 8 * * 1'
+
+    #a → minuto
+    #b → hora
+    #c → dias do mês
+    #d → meses do ano
+    #e → dias da semana
+
+    #rodar toda segunda-feira, às 08h da manhã
+    #a b c d e
+    #0 8 * * 1
 
 jobs:
   #descricao do job
